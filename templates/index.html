@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Transformation</title>
+</head>
+<body>
+    <h1>Image Transformation</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" accept=".jpg, .jpeg, .png" required>
+        <br>
+        <label for="transformation_type">Choose Transformation:</label>
+        <select name="transformation_type" id="transformation_type">
+            <option value="negative">Âm bản</option>
+            <option value="threshold">Ngưỡng</option>
+            <option value="gray">Tuyến tính</option>
+            <option value="logarithm">logarithm</option>
+            <option value="power">Mũ</option>
+            <option value="histogram_equalization">Cân bằng lược đồ xám</option>
+            <option value="edge_detection">Canny</option>
+            <option value="sobel">sobel</option>
+            <option value="morphology">morphology</option>
+            <option value="blur">blur</option>
+            <option value="otsu">otsu</option>
+            <option value="dilation">dilation</option>
+            <option value="neighbor_operator">neighbor_operator</option>
+            <option value="opening">opening</option>
+            <option value="closing">closing</option>
+        </select>
+        <br>
+        <input type="submit" value="Apply Transformation">
+    </form>
+
+    {% if original_image_path and transformed_image_path %}
+    <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-around;">
+        <div>
+            <h2>Original Image</h2>
+            <img src="{{ original_image_path }}" alt="Original Image" width="300">
+        </div>
+        
+        <div>
+            <h2>Transformed Image</h2>
+            <img src="{{ transformed_image_path }}" alt="Transformed Image" width="300">
+        </div>
+    </div>
+{% endif %}
+</body>
+</html>
